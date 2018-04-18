@@ -1,0 +1,161 @@
+---
+ios_interfaces:
+  GigabitEthernet1/0/1:
+    description:         unconfigured
+    enabled:             true
+    l2:
+      access_vlan:       1
+      mode:              access
+      state:             unconfigured
+    l3:
+      ipv4:              []
+      state:             absent
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/4:
+    description:         unconfigured
+    enabled:             true
+    l2:
+      access_vlan:       1
+      mode:              access
+      state:             unconfigured
+    l3:
+      ipv4:              []
+      state:             absent
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/5:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/6:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/7:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/10:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/11:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/13:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/15:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/16:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/23:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/25:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/26:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/27:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/28:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/38:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/39:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/40:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/41:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/42:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/43:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/44:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/45:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/46:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/48:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/49:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/50:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/51:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/52:
+    description:         unconfigured
+    enabled:             true
+    speed:               auto
+    state:               present

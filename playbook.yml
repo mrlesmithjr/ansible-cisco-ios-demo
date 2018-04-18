@@ -1,0 +1,87 @@
+---
+- name:                 Managing Cisco IOS Devices
+  hosts:                ios
+  gather_facts:         false
+  tasks:
+    - name:             Managing System Settings
+      ios_system:
+        hostname:       "{{ inventory_hostname }}"
+        domain_name:    "{{ ios_domain_name }}"
+        lookup_enabled: "{{ ios_dns_lookup_enabled }}"
+        name_servers:   "{{ ios_dns_servers }}"
+        state:          present
+      tags:
+        - ios_system
+
+    - name:             Managing Interfaces
+      ios_interface:
+        description:    "{{ item['value']['description'] }}"
+        enabled:        "{{ item['value']['enabled'] }}"
+        name:           "{{ item['key'] }}"
+        state:          "{{ item['value']['state'] }}"
+      tags:
+        - ios_interfaces
+      with_dict:        "{{ ios_interfaces }}"
+
+    - name:             Managing VLANs
+      ios_vlan:
+        interfaces:     "{{ item['value']['interfaces'] }}"
+        state:          "{{ item['value']['state'] }}"
+        vlan_id:        "{{ item['key'] }}"
+      tags:
+        - ios_vlans
+      with_dict:        "{{ ios_vlans }}"
+
+## Doesn't work
+    # - name:           Managing L2 Interfaces
+    #   ios_l2_interface:
+    #     access_vlan:  "{{ item['value']['l2']['access_vlan']|default(omit) }}"
+    #     mode:         "{{ item['value']['l2']['mode']|default(omit) }}"
+    #     name:         "{{ item['key'] }}"
+    #     state:        "{{ item['value']['l2']['state']|default(omit) }}"
+    #   tags:
+    #     - ios_l2_interfaces
+    #   with_dict:      "{{ ios_interfaces }}"
+    #   when:           item['value']['l2'] is defined
+    #
+## Doesn't work
+    # - name:           Managing L3 Interfaces
+    #   ios_l3_interface:
+    #     ipv4:         "{{ item['value']['l3']['ipv4']|default(omit) }}"
+    #     name:         "{{ item['key'] }}"
+    #     state:        "{{ item['value']['l3']['state']|default(omit) }}"
+    #   tags:
+    #     - ios_l3_interfaces
+    #   with_dict:      "{{ ios_interfaces }}"
+    #   when:           item['value']['l3'] is defined
+
+    - name:             Managing LLDP
+      ios_lldp:
+        state:          "{{ 'present' if ios_lldp_enabled else 'absent' }}"
+      tags:
+        - ios_lldp
+
+## Doesn't work
+    # - name:           Managing Static Routes
+    #   ios_static_route:
+    #     admin_distance: "{{ item['value']['admin_distance']|default(omit) }}"
+    #     mask:         "{{ item['value']['mask'] }}"
+    #     next_hop:     "{{ item['value']['next_hop'] }}"
+    #     prefix:       "{{ item['key'] }}"
+    #     state:        "{{ item['value']['state'] }}"
+    #   tags:
+    #     - ios_static_routes
+    #   with_dict:      "{{ ios_static_routes }}"
+    #   when:           ios_static_routes != {}
+
+    - name:             Saving Running Config
+      ios_config:
+        save_when:      modified
+      tags:
+        - ios_interfaces
+        - ios_l2_interfaces
+        - ios_l3_interfaces
+        - ios_lldp
+        - ios_static_routes
+        - ios_system
+        - ios_vlans

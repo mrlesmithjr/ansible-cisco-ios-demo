@@ -1,0 +1,10 @@
+---
+ios_dns_lookup_enabled: true
+
+ios_dns_servers:
+  - 10.0.102.41
+  - 10.0.102.42
+
+ios_domain_name:        "{{ pri_domain_name }}"
+
+pri_domain_name:        lab.etsbv.internal

@@ -1,0 +1,6 @@
+---
+ios_static_routes:
+  0.0.0.0:
+    mask:          0.0.0.0
+    next_hop:      10.10.10.1
+    state:         present
