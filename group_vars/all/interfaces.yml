@@ -69,6 +69,15 @@ ios_interfaces:
     enabled:             true
     speed:               auto
     state:               present
+  # GigabitEthernet1/0/24:
+  #   description:       unconfigured
+  #   enabled:           true
+  #   l2:
+  #     access_vlan:     1
+  #     mode:            access
+  #     state:           unconfigured
+  #   speed:             auto
+  #   state:             present
   GigabitEthernet1/0/25:
     description:         unconfigured
     enabled:             true
@@ -157,5 +166,53 @@ ios_interfaces:
   GigabitEthernet1/0/52:
     description:         unconfigured
     enabled:             true
+    speed:               auto
+    state:               present
+  Vlan10:
+    description:         PFSense vlan communication
+    enabled:             true
+    l3:
+      ipv4:              10.10.10.3/24
+      state:             present
+    speed:               auto
+    state:               present
+  Vlan101:
+    description:         LAB-101
+    enabled:             true
+    l3:
+      ipv4:              10.0.101.1/24
+      state:             present
+    speed:               auto
+    state:               present
+  Vlan102:
+    description:         LAB-102
+    enabled:             true
+    l3:
+      ipv4:              10.0.102.1/24
+      state:             present
+    speed:               auto
+    state:               present
+  Vlan127:
+    description:         vMotion
+    enabled:             true
+    l3:
+      ipv4:              []
+      state:             absent
+    speed:               auto
+    state:               present
+  Vlan201:
+    description:         DMZ
+    enabled:             true
+    l3:
+      ipv4:              []
+      state:             absent
+    speed:               auto
+    state:               present
+  Vlan24:
+    description:         LAN
+    enabled:             true
+    l3:
+      ipv4:              []
+      state:             absent
     speed:               auto
     state:               present
