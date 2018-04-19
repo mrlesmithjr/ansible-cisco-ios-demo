@@ -33,6 +33,7 @@
       with_dict:        "{{ ios_vlans }}"
 
 ## Doesn't work
+# https://github.com/ansible/ansible/issues/39011
     # - name:           Managing L2 Interfaces
     #   ios_l2_interface:
     #     access_vlan:  "{{ item['value']['l2']['access_vlan']|default(omit) }}"
@@ -62,6 +63,7 @@
         - ios_lldp
 
 ## Doesn't work
+# https://github.com/ansible/ansible/issues/38989
     # - name:           Managing Static Routes
     #   ios_static_route:
     #     admin_distance: "{{ item['value']['admin_distance']|default(omit) }}"
