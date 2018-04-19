@@ -114,6 +114,36 @@ ios_interfaces:
     lines:               []
     speed:               auto
     state:               present
+  GigabitEthernet1/0/35:
+    description:         Master_Bedroom_ASUS_ASUS5G
+    enabled:             true
+    lines:               []
+    l2:
+      access_vlan:       24
+      mode:              access
+      state:             present
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/36:
+    description:         D-Link_Switch_Uplink
+    enabled:             true
+    lines:               []
+    l2:
+      access_vlan:       24
+      mode:              access
+      state:             present
+    speed:               auto
+    state:               present
+  GigabitEthernet1/0/37:
+    description:         Playroom_ASUS_ASUS5G
+    enabled:             true
+    lines:               []
+    l2:
+      access_vlan:       24
+      mode:              access
+      state:             present
+    speed:               auto
+    state:               present
   GigabitEthernet1/0/38:
     description:         unconfigured
     enabled:             true
@@ -168,6 +198,16 @@ ios_interfaces:
     lines:               []
     speed:               auto
     state:               present
+  GigabitEthernet1/0/47:
+    description:         Linksys_Wireless
+    enabled:             true
+    lines:               []
+    l2:
+      access_vlan:       24
+      mode:              access
+      state:             present
+    speed:               auto
+    state:               present
   GigabitEthernet1/0/48:
     description:         unconfigured
     enabled:             true
@@ -199,7 +239,7 @@ ios_interfaces:
     speed:               auto
     state:               present
   Vlan10:
-    description:         PFSense vlan communication
+    description:         OSPF_Uplink_To_Router
     enabled:             true
     l3:
       ipv4:              10.10.10.3/24
