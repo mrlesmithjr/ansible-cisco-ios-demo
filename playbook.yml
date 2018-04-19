@@ -23,6 +23,17 @@
         - ios_interfaces
       with_dict:        "{{ ios_interfaces }}"
 
+    - name:             Managing Interfaces Add'l Configuration Lines
+      ios_config:
+        lines:          "{{ item['value']['lines'] }}"
+        parents:        "interface {{ item['key'] }}"
+      tags:
+        - ios_interfaces
+      with_dict:        "{{ ios_interfaces }}"
+      when:             >
+            item['value']['lines'] is defined and
+            item['value']['lines'] != []
+
     - name:             Managing VLANs
       ios_vlan:
         interfaces:     "{{ item['value']['interfaces'] }}"
