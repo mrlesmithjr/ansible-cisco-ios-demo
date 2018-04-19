@@ -34,27 +34,27 @@
 
 ## Doesn't work
 # https://github.com/ansible/ansible/issues/39011
-    # - name:           Managing L2 Interfaces
-    #   ios_l2_interface:
-    #     access_vlan:  "{{ item['value']['l2']['access_vlan']|default(omit) }}"
-    #     mode:         "{{ item['value']['l2']['mode']|default(omit) }}"
-    #     name:         "{{ item['key'] }}"
-    #     state:        "{{ item['value']['l2']['state']|default(omit) }}"
-    #   tags:
-    #     - ios_l2_interfaces
-    #   with_dict:      "{{ ios_interfaces }}"
-    #   when:           item['value']['l2'] is defined
-    #
+    - name:             Managing L2 Interfaces
+      ios_l2_interface:
+        access_vlan:    "{{ item['value']['l2']['access_vlan']|default(omit) }}"
+        mode:           "{{ item['value']['l2']['mode']|default(omit) }}"
+        name:           "{{ item['key'] }}"
+        state:          "{{ item['value']['l2']['state']|default(omit) }}"
+      tags:
+        - ios_l2_interfaces
+      with_dict:        "{{ ios_interfaces }}"
+      when:             item['value']['l2'] is defined
+
 ## Doesn't work
-    # - name:           Managing L3 Interfaces
-    #   ios_l3_interface:
-    #     ipv4:         "{{ item['value']['l3']['ipv4']|default(omit) }}"
-    #     name:         "{{ item['key'] }}"
-    #     state:        "{{ item['value']['l3']['state']|default(omit) }}"
-    #   tags:
-    #     - ios_l3_interfaces
-    #   with_dict:      "{{ ios_interfaces }}"
-    #   when:           item['value']['l3'] is defined
+    - name:             Managing L3 Interfaces
+      ios_l3_interface:
+        ipv4:           "{{ item['value']['l3']['ipv4']|default(omit) }}"
+        name:           "{{ item['key'] }}"
+        state:          "{{ item['value']['l3']['state']|default(omit) }}"
+      tags:
+        - ios_l3_interfaces
+      with_dict:        "{{ ios_interfaces }}"
+      when:             item['value']['l3'] is defined
 
     - name:             Managing LLDP
       ios_lldp:
