@@ -45,7 +45,7 @@
 
 ## Doesn't work
 # https://github.com/ansible/ansible/issues/39011
-    - name:             Managing L2 Interfaces
+    - name:             Managing L2 Interfaces (Access Mode)
       ios_l2_interface:
         access_vlan:    "{{ item['value']['l2']['access_vlan']|default(omit) }}"
         mode:           "{{ item['value']['l2']['mode']|default(omit) }}"
@@ -54,7 +54,27 @@
       tags:
         - ios_l2_interfaces
       with_dict:        "{{ ios_interfaces }}"
-      when:             item['value']['l2'] is defined
+      when:             >
+                        item['value']['l2'] is defined and
+                        item['value']['l2'] != [] and
+                        item['value']['l2'] != {} and
+                        item['value']['l2']['mode'] == "access"
+
+    - name:             Managing L2 Interfaces (Trunk Mode)
+      ios_l2_interface:
+        mode:           "{{ item['value']['l2']['mode']|default(omit) }}"
+        name:           "{{ item['key'] }}"
+        native_vlan:    "{{ item['value']['l2']['native_vlan']|default(omit) }}"
+        state:          "{{ item['value']['l2']['state']|default(omit) }}"
+        trunk_vlans:    "{{ item['value']['l2']['trunk_vlans']|join(',') }}"
+      tags:
+        - ios_l2_interfaces
+      with_dict:        "{{ ios_interfaces }}"
+      when:             >
+                        item['value']['l2'] is defined and
+                        item['value']['l2'] != [] and
+                        item['value']['l2'] != {} and
+                        item['value']['l2']['mode'] == "trunk"
 
 ## Doesn't work
     - name:             Managing L3 Interfaces
