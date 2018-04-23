@@ -1,6 +1,22 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [ansible-cisco-ios-demo](#ansible-cisco-ios-demo)
+  - [Requirements](#requirements)
+    - [Variables](#variables)
+    - [Inventory](#inventory)
+  - [Open Issues](#open-issues)
+  - [Usage](#usage)
+    - [Defining Additional Interface Settings](#defining-additional-interface-settings)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # ansible-cisco-ios-demo
 
 ## Requirements
+
+### Variables
 
 Create `group_vars/all/accounts.yml`:
 
@@ -9,6 +25,10 @@ ansible_user:          admin
 ansible_ssh_pass:      adminpass
 ansible_become_pass:   enablepass
 ```
+
+### Inventory
+
+Update [inventory](hosts.yml) based on your needs.
 
 ## Open Issues
 
