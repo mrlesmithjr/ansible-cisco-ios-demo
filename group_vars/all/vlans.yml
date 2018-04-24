@@ -31,29 +31,37 @@ ios_vlans:
       - GigabitEthernet1/0/50
       - GigabitEthernet1/0/51
       - GigabitEthernet1/0/52
-    name:       default
-    state:      present
+    name:          default
+    state:         present
   24:
     interfaces:
       - GigabitEthernet1/0/35
       - GigabitEthernet1/0/36
       - GigabitEthernet1/0/37
       - GigabitEthernet1/0/47
-    name:       LAN
-    state:      present
+    name:          LAN
+    state:         present
   101:
-    interfaces: []
-    name:       LAB-101
-    state:      present
+    interfaces:    []
+    name:          LAB-101
+    state:         present
   102:
-    interfaces: []
-    name:       LAB-102
-    state:      present
+    interfaces:    []
+    name:          LAB-102
+    state:         present
   127:
-    interfaces: []
-    name:       vMotion
-    state:      present
+    interfaces:    []
+    name:          vMotion
+    state:         present
   201:
-    interfaces: []
-    name:       DMZ
-    state:      present
+    interfaces:    []
+    name:          DMZ
+    state:         present
+
+# Defines VLANs that vSphere hosts should be configured for.
+ios_vsphere_vlans:
+  - 24
+  - 101
+  - 102
+  - 127-130
+  - 201
