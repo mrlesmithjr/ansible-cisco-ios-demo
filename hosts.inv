@@ -1,0 +1,8 @@
+[cisco:children]
+ios
+
+[ios]
+switch01 ansible_host=10.10.10.3
+
+[ios:vars]
+ansible_network_os=ios
