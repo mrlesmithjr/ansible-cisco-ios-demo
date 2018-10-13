@@ -1,117 +1,148 @@
 ---
 ios_interfaces:
+  # GigabitEthernet1/0/1:
+  #   description:         unconfigured
+  #   enabled:             true
+  #   l2:
+  #     access_vlan:       1
+  #     mode:              access
+  #     state:             unconfigured
+  #   l3:
+  #     ipv4:              []
+  #     state:             absent
+  #   lines:               []
+  #   speed:               auto
+  #   state:               present
   GigabitEthernet1/0/1:
-    description:         unconfigured
-    enabled:             true
-    l2:
-      access_vlan:       1
-      mode:              access
-      state:             unconfigured
-    l3:
-      ipv4:              []
-      state:             absent
-    lines:               []
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/2:
-    description:         NAS01
-    enabled:             true
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
-      - switchport mode trunk
-      - channel-protocol lacp
-      - channel-group 1 mode active
-      - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/3:
-    description:         Firewall
-    enabled:             true
+    description: Firewall
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan 10,24,201
       - switchport mode trunk
-      - no spanning-tree portfast trunk
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/4:
-    description:         unconfigured
-    enabled:             true
+    speed: auto
+    state: present
+  GigabitEthernet1/0/2:
+    description: D-Link_Switch_Uplink
+    enabled: true
     l2:
-      access_vlan:       1
-      mode:              access
-      state:             unconfigured
-    l3:
-      ipv4:              []
-      state:             absent
-    lines:
-      - no spanning-tree portfast
-    speed:               auto
-    state:               present
+      access_vlan: 24
+      mode: access
+      state: present
+    lines: []
+    speed: auto
+    state: present
+  # GigabitEthernet1/0/3:
+  #   description:         Firewall
+  #   enabled:             true
+  #   lines:
+  #     - switchport trunk encapsulation dot1q
+  #     - switchport trunk allowed vlan 10,24,201
+  #     - switchport mode trunk
+  #     - no spanning-tree portfast trunk
+  #   speed:               auto
+  #   state:               present
+  GigabitEthernet1/0/3:
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
+  # GigabitEthernet1/0/4:
+  #   description:         unconfigured
+  #   enabled:             true
+  #   l2:
+  #     access_vlan:       1
+  #     mode:              access
+  #     state:             unconfigured
+  #   l3:
+  #     ipv4:              []
+  #     state:             absent
+  #   lines:
+  #     - no spanning-tree portfast
+  #   speed:               auto
+  #   state:               present
+  GigabitEthernet1/0/4:
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/5:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/6:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/7:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/8:
-    description:         kvm01-ilo
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/9:
-    description:         kvm02-ilo
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/10:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/11:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/12:
-    description:         NAS02
-    enabled:             true
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
-      - switchport mode trunk
-      - channel-protocol lacp
-      - channel-group 2 mode active
-      - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/13:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/14:
-    description:         NAS01
-    enabled:             true
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
+  GigabitEthernet1/0/15:
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
+  GigabitEthernet1/0/16:
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
+  GigabitEthernet1/0/17:
+    description: NAS01
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
@@ -119,89 +150,23 @@ ios_interfaces:
       - channel-protocol lacp
       - channel-group 1 mode active
       - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/15:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/16:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/17:
-    description:         ESXi-01
-    enabled:             true
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
-      - switchport mode trunk
-      - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
   GigabitEthernet1/0/18:
-    description:         ESXi-01
-    enabled:             true
+    description: NAS01
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
       - switchport mode trunk
+      - channel-protocol lacp
+      - channel-group 1 mode active
       - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
   GigabitEthernet1/0/19:
-    description:         ESXi-02
-    enabled:             true
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
-      - switchport mode trunk
-      - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/20:
-    description:         ESXi-02
-    enabled:             true
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
-      - switchport mode trunk
-      - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/21:
-    description:         ESXi-01
-    enabled:             true
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
-      - switchport mode trunk
-      - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/22:
-    description:         ESXi-01
-    enabled:             true
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
-      - switchport mode trunk
-      - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/23:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
-  GigabitEthernet1/0/24:
-    description:         NAS02
-    enabled:             true
+    description: NAS02
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
@@ -209,289 +174,343 @@ ios_interfaces:
       - channel-protocol lacp
       - channel-group 2 mode active
       - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
+  GigabitEthernet1/0/20:
+    description: NAS02
+    enabled: true
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
+      - switchport mode trunk
+      - channel-protocol lacp
+      - channel-group 2 mode active
+      - spanning-tree portfast trunk
+    speed: auto
+    state: present
+  GigabitEthernet1/0/21:
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
+  GigabitEthernet1/0/22:
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
+  GigabitEthernet1/0/23:
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
+  GigabitEthernet1/0/24:
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/25:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/26:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/27:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/28:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/29:
-    description:         ESXi-01
-    enabled:             true
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
-      - switchport mode trunk
-      - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/30:
-    description:         ESXi-01
-    enabled:             true
-    lines:
-      - switchport trunk encapsulation dot1q
-      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
-      - switchport mode trunk
-      - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/31:
-    description:         ESXi-02
-    enabled:             true
+    description: ESXi-02
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
       - switchport mode trunk
       - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
   GigabitEthernet1/0/32:
-    description:         ESXi-02
-    enabled:             true
+    description: ESXi-02
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
       - switchport mode trunk
       - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
   GigabitEthernet1/0/33:
-    description:         ESXi-02
-    enabled:             true
+    description: ESXi-02
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
       - switchport mode trunk
       - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
   GigabitEthernet1/0/34:
-    description:         ESXi-02
-    enabled:             true
+    description: ESXi-02
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
       - switchport mode trunk
       - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
   GigabitEthernet1/0/35:
-    description:         Master_Bedroom_ASUS_ASUS5G
-    enabled:             true
-    lines:               []
-    l2:
-      access_vlan:       24
-      mode:              access
-      state:             present
-    speed:               auto
-    state:               present
+    description: ESXi-02
+    enabled: true
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
+      - switchport mode trunk
+      - spanning-tree portfast trunk
+    speed: auto
+    state: present
   GigabitEthernet1/0/36:
-    description:         D-Link_Switch_Uplink
-    enabled:             true
-    lines:               []
-    l2:
-      access_vlan:       24
-      mode:              access
-      state:             present
-    speed:               auto
-    state:               present
+    description: ESXi-02
+    enabled: true
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
+      - switchport mode trunk
+      - spanning-tree portfast trunk
+    speed: auto
+    state: present
   GigabitEthernet1/0/37:
-    description:         Playroom_ASUS_ASUS5G
-    enabled:             true
-    lines:               []
-    l2:
-      access_vlan:       24
-      mode:              access
-      state:             present
-    speed:               auto
-    state:               present
+    description: ESXi-01
+    enabled: true
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
+      - switchport mode trunk
+      - spanning-tree portfast trunk
+    speed: auto
+    state: present
   GigabitEthernet1/0/38:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: ESXi-01
+    enabled: true
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
+      - switchport mode trunk
+      - spanning-tree portfast trunk
+    speed: auto
+    state: present
   GigabitEthernet1/0/39:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: ESXi-01
+    enabled: true
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
+      - switchport mode trunk
+      - spanning-tree portfast trunk
+    speed: auto
+    state: present
   GigabitEthernet1/0/40:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: ESXi-01
+    enabled: true
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
+      - switchport mode trunk
+      - spanning-tree portfast trunk
+    speed: auto
+    state: present
   GigabitEthernet1/0/41:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: ESXi-01
+    enabled: true
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
+      - switchport mode trunk
+      - spanning-tree portfast trunk
+    speed: auto
+    state: present
   GigabitEthernet1/0/42:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: ESXi-01
+    enabled: true
+    lines:
+      - switchport trunk encapsulation dot1q
+      - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
+      - switchport mode trunk
+      - spanning-tree portfast trunk
+    speed: auto
+    state: present
   GigabitEthernet1/0/43:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/44:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/45:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/46:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/47:
-    description:         Linksys_Wireless
-    enabled:             true
-    lines:               []
-    l2:
-      access_vlan:       24
-      mode:              access
-      state:             present
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/48:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/49:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/50:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/51:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   GigabitEthernet1/0/52:
-    description:         unconfigured
-    enabled:             true
-    lines:               []
-    speed:               auto
-    state:               present
+    description: unconfigured
+    enabled: true
+    lines: []
+    speed: auto
+    state: present
   Port-channel1:
-    description:         NAS01
-    enabled:             true
+    description: NAS01
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
       - switchport mode trunk
       - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
   Port-channel2:
-    description:         NAS02
-    enabled:             true
+    description: NAS02
+    enabled: true
     lines:
       - switchport trunk encapsulation dot1q
       - switchport trunk allowed vlan {{ ios_vsphere_vlans|join(',') }}
       - switchport mode trunk
       - spanning-tree portfast trunk
-    speed:               auto
-    state:               present
-  Vlan10:
-    description:         OSPF_Uplink_To_Router
-    enabled:             true
+    speed: auto
+    state: present
+  Vlan1:
+    description: default
+    enabled: true
     l3:
-      ipv4:              10.10.10.3/24
-      state:             present
+      ipv4: []
+      state: absent
+    lines:
+      - shutdown
+    speed: auto
+    state: present
+  Vlan10:
+    description: OSPF_Uplink_To_Router
+    enabled: true
+    l3:
+      ipv4: 10.10.10.3/24
+      state: present
     lines:
       - ip ospf cost 10
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
   Vlan101:
-    description:         LAB-101
-    enabled:             true
+    description: LAB-101
+    enabled: true
     l3:
-      ipv4:              10.0.101.1/24
-      state:             present
+      ipv4: 10.0.101.1/24
+      state: present
     lines:
       - ip helper-address 10.10.10.1
-    speed:               auto
-    state:               present
+    speed: auto
+    state: present
   Vlan102:
-    description:         LAB-102
-    enabled:             true
+    description: LAB-102
+    enabled: true
     l3:
-      ipv4:              10.0.102.1/24
-      state:             present
-    lines:               []
-    speed:               auto
-    state:               present
+      ipv4: 10.0.102.1/24
+      state: present
+    lines: []
+    speed: auto
+    state: present
   Vlan127:
-    description:         vMotion
-    enabled:             true
+    description: vMotion
+    enabled: true
     l3:
-      ipv4:              []
-      state:             absent
-    lines:               []
-    speed:               auto
-    state:               present
+      ipv4: []
+      state: absent
+    lines: []
+    speed: auto
+    state: present
   Vlan201:
-    description:         DMZ
-    enabled:             true
+    description: DMZ
+    enabled: true
     l3:
-      ipv4:              []
-      state:             absent
-    lines:               []
-    speed:               auto
-    state:               present
+      ipv4: []
+      state: absent
+    lines: []
+    speed: auto
+    state: present
   Vlan24:
-    description:         LAN
-    enabled:             true
+    description: LAN
+    enabled: true
     l3:
-      ipv4:              []
-      state:             absent
-    lines:               []
-    speed:               auto
-    state:               present
+      ipv4: []
+      state: absent
+    lines: []
+    speed: auto
+    state: present

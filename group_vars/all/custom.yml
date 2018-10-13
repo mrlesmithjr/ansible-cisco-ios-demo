@@ -1,0 +1,21 @@
+---
+# These are for configurations that do not currently have a module
+ios_custom_configs:
+  # Configure OSPF
+  - lines:
+      - router-id 10.10.10.3
+      - log-adjacency-changes
+      - network 0.0.0.0 255.255.255.255 area 0
+    parents: router ospf 10
+
+  # Configure NTP
+  - lines:
+    - ntp logging
+    - ntp source Vlan10
+    - ntp server 66.228.59.187
+    - ntp server 45.33.41.203
+    - ntp server 12.167.151.1 prefer
+
+  # Configure Static Routes
+  - lines:
+      - ip route 0.0.0.0 0.0.0.0 10.10.10.1

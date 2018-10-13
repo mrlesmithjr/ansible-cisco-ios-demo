@@ -1,116 +1,126 @@
 ---
-- name:                 Managing Cisco IOS Devices
-  hosts:                ios
-  gather_facts:         false
+- name: Managing Cisco IOS Devices
+  hosts: ios
+  gather_facts: false
   tasks:
-    - name:             Managing System Settings
+    - name: Managing System Settings
       ios_system:
-        hostname:       "{{ inventory_hostname }}"
-        domain_name:    "{{ ios_domain_name }}"
+        hostname: "{{ inventory_hostname }}"
+        domain_name: "{{ ios_domain_name }}"
         lookup_enabled: "{{ ios_dns_lookup_enabled }}"
-        name_servers:   "{{ ios_dns_servers }}"
-        state:          present
+        name_servers: "{{ ios_dns_servers }}"
+        state: present
       tags:
         - ios_system
 
-    - name:             Managing Interfaces
+    - name: Managing Interfaces
       ios_interface:
-        description:    "{{ item['value']['description'] }}"
-        enabled:        "{{ item['value']['enabled'] }}"
-        name:           "{{ item['key'] }}"
-        state:          "{{ item['value']['state'] }}"
+        description: "{{ item['value']['description'] }}"
+        enabled: "{{ item['value']['enabled'] }}"
+        name: "{{ item['key'] }}"
+        state: "{{ item['value']['state'] }}"
       tags:
         - ios_interfaces
-      with_dict:        "{{ ios_interfaces }}"
+      with_dict: "{{ ios_interfaces }}"
 
-    - name:             Managing Interfaces Add'l Configuration Lines
+    - name: Managing Interfaces Add'l Configuration Lines
       ios_config:
-        lines:          "{{ item['value']['lines'] }}"
-        parents:        "interface {{ item['key'] }}"
+        lines: "{{ item['value']['lines'] }}"
+        parents: "interface {{ item['key'] }}"
       tags:
         - ios_interfaces
-      with_dict:        "{{ ios_interfaces }}"
-      when:             >
-            item['value']['lines'] is defined and
-            item['value']['lines'] != []
+      with_dict: "{{ ios_interfaces }}"
+      when: >
+        item['value']['lines'] is defined and
+        item['value']['lines'] != []
 
-    - name:             Managing VLANs
+    - name: Managing VLANs
       ios_vlan:
-        interfaces:     "{{ item['value']['interfaces'] }}"
-        state:          "{{ item['value']['state'] }}"
-        vlan_id:        "{{ item['key'] }}"
+        interfaces: "{{ item['value']['interfaces'] }}"
+        state: "{{ item['value']['state'] }}"
+        vlan_id: "{{ item['key'] }}"
       tags:
         - ios_vlans
-      with_dict:        "{{ ios_vlans }}"
+      with_dict: "{{ ios_vlans }}"
 
-## Doesn't work
-# https://github.com/ansible/ansible/issues/39011
-    - name:             Managing L2 Interfaces (Access Mode)
+    ## Doesn't work
+    # https://github.com/ansible/ansible/issues/39011
+    - name: Managing L2 Interfaces (Access Mode)
       ios_l2_interface:
-        access_vlan:    "{{ item['value']['l2']['access_vlan']|default(omit) }}"
-        mode:           "{{ item['value']['l2']['mode']|default(omit) }}"
-        name:           "{{ item['key'] }}"
-        state:          "{{ item['value']['l2']['state']|default(omit) }}"
+        access_vlan: "{{ item['value']['l2']['access_vlan']|default(omit) }}"
+        mode: "{{ item['value']['l2']['mode']|default(omit) }}"
+        name: "{{ item['key'] }}"
+        state: "{{ item['value']['l2']['state']|default(omit) }}"
       tags:
         - ios_l2_interfaces
-      with_dict:        "{{ ios_interfaces }}"
-      when:             >
-                        item['value']['l2'] is defined and
-                        item['value']['l2'] != [] and
-                        item['value']['l2'] != {} and
-                        item['value']['l2']['mode'] == "access"
+      with_dict: "{{ ios_interfaces }}"
+      when: >
+        item['value']['l2'] is defined and
+        item['value']['l2'] != [] and
+        item['value']['l2'] != {} and
+        item['value']['l2']['mode'] == "access"
 
-    - name:             Managing L2 Interfaces (Trunk Mode)
+    - name: Managing L2 Interfaces (Trunk Mode)
       ios_l2_interface:
-        mode:           "{{ item['value']['l2']['mode']|default(omit) }}"
-        name:           "{{ item['key'] }}"
-        native_vlan:    "{{ item['value']['l2']['native_vlan']|default(omit) }}"
-        state:          "{{ item['value']['l2']['state']|default(omit) }}"
-        trunk_vlans:    "{{ item['value']['l2']['trunk_vlans']|join(',') }}"
+        mode: "{{ item['value']['l2']['mode']|default(omit) }}"
+        name: "{{ item['key'] }}"
+        native_vlan: "{{ item['value']['l2']['native_vlan']|default(omit) }}"
+        state: "{{ item['value']['l2']['state']|default(omit) }}"
+        trunk_vlans: "{{ item['value']['l2']['trunk_vlans']|join(',') }}"
       tags:
         - ios_l2_interfaces
-      with_dict:        "{{ ios_interfaces }}"
-      when:             >
-                        item['value']['l2'] is defined and
-                        item['value']['l2'] != [] and
-                        item['value']['l2'] != {} and
-                        item['value']['l2']['mode'] == "trunk"
+      with_dict: "{{ ios_interfaces }}"
+      when: >
+        item['value']['l2'] is defined and
+        item['value']['l2'] != [] and
+        item['value']['l2'] != {} and
+        item['value']['l2']['mode'] == "trunk"
 
-## Doesn't work
-    - name:             Managing L3 Interfaces
+    ## Doesn't work
+    - name: Managing L3 Interfaces
       ios_l3_interface:
-        ipv4:           "{{ item['value']['l3']['ipv4']|default(omit) }}"
-        name:           "{{ item['key'] }}"
-        state:          "{{ item['value']['l3']['state']|default(omit) }}"
+        ipv4: "{{ item['value']['l3']['ipv4']|default(omit) }}"
+        name: "{{ item['key'] }}"
+        state: "{{ item['value']['l3']['state']|default(omit) }}"
       tags:
         - ios_l3_interfaces
-      with_dict:        "{{ ios_interfaces }}"
-      when:             item['value']['l3'] is defined
+      with_dict: "{{ ios_interfaces }}"
+      when: item['value']['l3'] is defined
 
-    - name:             Managing LLDP
+    - name: Managing LLDP
       ios_lldp:
-        state:          "{{ 'present' if ios_lldp_enabled else 'absent' }}"
+        state: "{{ 'present' if ios_lldp_enabled else 'absent' }}"
       tags:
         - ios_lldp
 
-## Doesn't work
-# https://github.com/ansible/ansible/issues/38989
-    - name:             Managing Static Routes
+    ## Doesn't work
+    # https://github.com/ansible/ansible/issues/38989
+    - name: Managing Static Routes
       ios_static_route:
         admin_distance: "{{ item['value']['admin_distance']|default(omit) }}"
-        mask:           "{{ item['value']['mask'] }}"
-        next_hop:       "{{ item['value']['next_hop'] }}"
-        prefix:         "{{ item['key'] }}"
-        state:          "{{ item['value']['state'] }}"
+        mask: "{{ item['value']['mask'] }}"
+        next_hop: "{{ item['value']['next_hop'] }}"
+        prefix: "{{ item['key'] }}"
+        state: "{{ item['value']['state'] }}"
       tags:
         - ios_static_routes
-      with_dict:        "{{ ios_static_routes }}"
-      when:             ios_static_routes != {}
+      with_dict: "{{ ios_static_routes }}"
+      when: ios_static_routes != {}
 
-    - name:             Saving Running Config
+    - name: IOS Custom Configurations
       ios_config:
-        save_when:      modified
+        lines: "{{ item['lines'] }}"
+        parents: "{{ item['parents']|default(omit) }}"
       tags:
+        - ios_custom_configs
+      loop: "{{ ios_custom_configs }}"
+      when: ios_custom_configs != []
+
+    - name: Saving Running Config
+      ios_config:
+        save_when: modified
+      tags:
+        - ios_custom_configs
         - ios_interfaces
         - ios_l2_interfaces
         - ios_l3_interfaces
